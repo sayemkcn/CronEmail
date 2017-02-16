@@ -14,10 +14,11 @@ public class MailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void sendEmail(String email,String message) throws Exception{
-        SimpleMailMessage mailMessage=new SimpleMailMessage();
+    public void sendEmail(String email, String subject, String message) throws Exception {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(email);
-        mailMessage.setSubject("Response from Autism Barta");
+        mailMessage.setReplyTo("sayem@toracode.net");
+        mailMessage.setSubject(subject);
         mailMessage.setText(message);
         javaMailSender.send(mailMessage);
     }
